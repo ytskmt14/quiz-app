@@ -77,6 +77,10 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 9
 
+Metrics/BlockLength:
+  Exclude:
+    - 'lib/tasks/auto_annotate_models.rake'
+
 # Offense count: 2
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle.
