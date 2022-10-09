@@ -1,6 +1,4 @@
 ActiveAdmin.register Question do
-  MAX_CHOICE_COUNTS = 4
-
   permit_params :content, choices_attributes: [:id, :content, :is_correct, :_destroy]
 
   controller do
@@ -53,5 +51,4 @@ ActiveAdmin.register Question do
     end
     f.actions
   end
-  
 end

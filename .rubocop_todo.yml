@@ -80,6 +80,8 @@ Metrics/PerceivedComplexity:
 Metrics/BlockLength:
   Exclude:
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'app/admin/questions.rb'
+    - 'config/environments/development.rb'
 
 # Offense count: 2
 # This cop supports unsafe autocorrection (--autocorrect-all).

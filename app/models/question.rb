@@ -11,7 +11,7 @@ class Question < ApplicationRecord
   MAX_CHOICE_COUNTS = 4
   private_constant :MAX_CHOICE_COUNTS
 
-  has_many :choices
+  has_many :choices, dependent: :destroy
   accepts_nested_attributes_for :choices, allow_destroy: true
 
   validate :select_choices_within_max_counts
@@ -20,7 +20,6 @@ class Question < ApplicationRecord
   private
 
   def select_choices_within_max_counts
-    puts "choices.size: #{choices.size}"
     errors.add(:base, "Choiceは、#{MAX_CHOICE_COUNTS}つまで設定可能です。") if choices.size > MAX_CHOICE_COUNTS
   end
 
@@ -29,6 +28,6 @@ class Question < ApplicationRecord
   end
 
   def only_one_correct?
-    choices.target.select { |choice| choice.is_correct }.count == 1
+    choices.target.count(&:is_correct) == 1
   end
 end
